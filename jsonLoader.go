@@ -29,7 +29,6 @@ package gojsonschema
 import (
 	"bytes"
 	"encoding/json"
-	"errors"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -178,9 +177,9 @@ func (l *jsonReferenceLoader) loadFromHTTP(address string) (interface{}, error) 
 	}
 
 	// must return HTTP Status 200 OK
-	if resp.StatusCode != http.StatusOK {
-		return nil, errors.New(formatErrorDescription(Locale.HttpBadStatus(), ErrorDetails{"status": resp.Status}))
-	}
+	//if resp.StatusCode != http.StatusOK {
+	//	return nil, errors.New(formatErrorDescription(Locale.HttpBadStatus(), ErrorDetails{"status": resp.Status}))
+	//}
 
 	bodyBuff, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
